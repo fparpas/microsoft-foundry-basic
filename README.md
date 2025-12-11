@@ -122,33 +122,45 @@ The following steps are required to deploy the infrastructure from the command l
 
 ### 2. Deploy an agent in the Foundry Agent Service
 
-To test this scenario, you'll be deploying an AI agent. The agent uses a GPT model combined with a Bing search for grounding data. Deploying an AI agent requires data plane access to Microsoft Foundry. In this architecture, you will interact with the Foundry portal and its resources over internet.
+To test this scenario, you'll be deploying a prompt-based AI agent. The agent uses a GPT model combined with a Bing search for grounding data. Deploying an AI agent requires data plane access to Microsoft Foundry. In this architecture, you will interact with the Foundry portal and its resources over the internet.
 
 1. Open the Azure portal to your subscription.
 
-1. Navigate to the Foundry project named **projchat** in your resource group and open the Foundry portal by clicking the Go to **Microsoft Foundry portal** button.
+1. Navigate to the Foundry project named **projchat** in your resource group and open the Foundry portal by clicking the **Go to Foundry portal** button.
 
    This will take you directly into the 'Chat project'. Alternatively, you can find all your Foundry accounts and projects by going to <https://ai.azure.com> and you do not need to use the Azure portal to access them.
 
-1. Click **Agents** in the side navigation.
+1. In the upper-right corner, if not already enabled, toggle **New Foundry** to switch into the Microsoft Foundry (new) portal.
 
-1. Click **+ New agent** button.
+1. In the top-right corner, click **Build**. This opens by default the **Agents** blade in the side navigation, where you can view the available agents and create new ones.
 
-1. From the Setup panel, change the Agent name to 'Baseline Chatbot Agent'.
+   The first time you access this section, the **Agents** list should be empty.
 
-1. Click **+ Add** button in the Knowledge section.
+1. Click **Create agent** button.
+
+1. From the Create an agent popup, enter 'baseline-chatbot-agent' as the Agent name.
+
+1. From the Playground panel, select the available deployment model named **agent-model**.
+
+1. Expand the Knowledge section, and click **Add** button.
+
+1. From the drop down list select the option **+ Set up a data source via tools**.
 
 1. From the popup window select the knowledge type 'Grounding with Bing Search'.
 
-1. Then choose the existing connection named 'bingaiagent' and click the **Connect** button.
+1. Click **Add tool**.
+
+1. From the 'Grounding with Bing Search connection' drop down list choose the existing connection named 'bingaiagent', and click the **Add** button.
+
+1. Click **Save** buton at the top-right of the Agents' Playground panel.
 
 ### 3. Test the agent from the Foundry portal in the playground
 
-Here you'll test your orchestration agent by invoking it directly from the Foundry portal's playground experience.
+Here you'll test your orchestration agent by invoking it directly from the Foundry portal agent playground chat experience.
 
-1. Click the **Try in playground** button.
+1. Select the agent you just saved from the previous step named 'baseline-chatbot-agent'.
 
-1. Enter a question that would require grounding data through recent internet content, such as a notable recent event or the weather today in your location.
+1. Enter a question to the agent that would require grounding data through recent internet content, such as a notable recent event or the weather today in your location.
 
 1. A grounded response to your question should appear on the UI.
 
