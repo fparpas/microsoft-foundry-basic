@@ -154,6 +154,12 @@ To test this scenario, you'll be deploying a prompt-based AI agent. The agent us
 
 1. Click **Save** buton at the top-right of the Agents' Playground panel.
 
+1. Click **Publish** button at the top-right of the Agents' Playground panel and then click **Publish Agent** button.
+
+1. From the confirmation dialog click **Publish** button.
+
+   This will promote an agent from a development asset into a managed Azure resource with a dedicated endpoint.
+
 ### 3. Test the agent from the Foundry portal in the playground
 
 Here you'll test your orchestration agent by invoking it directly from the Foundry portal agent playground chat experience.
@@ -175,15 +181,15 @@ Workloads build chat functionality into an application. Those interfaces usually
    ```bash
    FOUNDRY_NAME="aif${BASE_NAME}"
    FOUNDRY_PROJECT_NAME="projchat"
-   FOUNDRY_AGENT_CREATE_URL="https://${FOUNDRY_NAME}.services.ai.azure.com/api/projects/${FOUNDRY_PROJECT_NAME}/assistants?api-version=2025-05-15-preview"
+   FOUNDRY_AGENTS_URL="https://${FOUNDRY_NAME}.services.ai.azure.com/api/projects/${FOUNDRY_PROJECT_NAME}/agents?api-version=2025-11-15-preview"
 
-   echo $FOUNDRY_AGENT_CREATE_URL
+   echo $FOUNDRY_AGENTS_URL
    ```
 
 1. Get Agent ID value.
 
    ```bash
-   AGENT_ID=$(az rest -u $FOUNDRY_AGENT_CREATE_URL -m "get" --resource "https://ai.azure.com" --query 'data[0].id' -o tsv)
+   AGENT_ID=$(az rest -u $FOUNDRY_AGENTS_URL -m "get" --resource "https://ai.azure.com" --query last_id -o tsv)
 
    echo $AGENT_ID
    ````
