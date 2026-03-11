@@ -34,6 +34,7 @@ public class ChatController(
             [ResponseContentPart.CreateInputTextPart(message)]);
 
         var _config = _options.CurrentValue;
+        // var agentRecords = await _projectClient.Agents.GetAgentsAsync().ToListAsync();
         AgentRecord agentRecord = await _projectClient.Agents.GetAgentAsync(_config.AIAgentId);
         var agent = agentRecord.Versions.Latest;
 
